@@ -13,6 +13,7 @@ for email in email_list:
     else:
         print("%s 不符合要求" % email)
 
+
 print('*'*50)
 
 for email in email_list:
