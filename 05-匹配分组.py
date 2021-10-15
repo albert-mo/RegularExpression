@@ -2,6 +2,7 @@
 
 import re
 
+# 示例1：|
 # 需求：匹配出0-100之间的数字
 
 ret = re.match("[1-9]?\\d", "8")
@@ -15,7 +16,7 @@ ret = re.match("[1-9]?\\d", "08")
 print(ret.group())  # 0
 
 # 修正之后的
-ret = re.match("[1-9]?\\d$", "08")
+ret = re.match("[1-9]?\d$", "08")
 if ret:
     print(ret.group())
 else:
@@ -68,6 +69,7 @@ for tel in tels:
 
 print('*'*50)
 
+# 示例2：( )
 # 提取区号和电话号码
 
 ret = re.match("([^-]*)-(\\d+)", "010-12345678")
@@ -79,11 +81,12 @@ else:
 
 print('*'*50)
 
+# 示例3：\
 # 需求：匹配出<html>hh</html>
 
 # 能够完成对正确的字符串的匹配
 ret = re.match("<[a-zA-Z]*>\\w*</[a-zA-Z]*>", "<html>hh</html>")
-print(ret.group())
+print(ret.group()) # <html>hh</html>
 
 # 如果遇到非正常的html格式字符串，匹配出错
 ret = re.match("<[a-zA-Z]*>\\w*</[a-zA-Z]*>", "<html>hh</htmlbalabala>")
@@ -105,6 +108,7 @@ else:
 
 print('*'*50)
 
+# 示例4：\number
 # 需求：匹配出<html><h1>www.itcast.cn</h1></html>
 
 labels = ["<html><h1>www.itcast.cn</h1></html>",
@@ -119,10 +123,15 @@ for label in labels:
 
 print('*'*50)
 
+# 示例5：(?P<name>) (?P=name)
 # 需求：匹配出<html><h1>www.itcast.cn</h1></html>
 
-ret = re.match(r"<(?P<name1>\w*)><(?P<name2>\w*)>.*</(?P=name2)></(?P=name1)>", "<html><h1>www.itcast.cn</h1></html>")
-ret.group()
+labels = ["<html><h1>www.itcast.cn</h1></html>",
+          "<html><h1>www.itcast.cn</h2></html>"]
 
-ret = re.match(r"<(?P<name1>\w*)><(?P<name2>\w*)>.*</(?P=name2)></(?P=name1)>", "<html><h1>www.itcast.cn</h2></html>")
-ret.group()
+for label in labels:
+    ret = re.match(r"<(?P<name1>\w*)><(?P<name2>\w*)>.*</(?P=name2)></(?P=name1)>", label)
+    if ret:
+        print("%s 是符合要求的标签" % ret.group())
+    else:
+        print("%s 不符合要求" % label)

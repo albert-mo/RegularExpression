@@ -13,5 +13,6 @@
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": false,
     "python.testing.promptToConfigure": false,
-    "workbench.settings.editor": "json"
+    "workbench.settings.editor": "json",
+    "python.formatting.provider": "yapf"
 }

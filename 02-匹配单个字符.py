@@ -66,15 +66,14 @@ ret = re.match("嫦娥\d号", "嫦娥2号发射成功")
 print(ret.group())
 
 ret = re.match("嫦娥\d号", "嫦娥3号发射成功")
-print(ret.group())
+print("嫦娥\d号: %s" % ret.group())
 
 # 匹配出，一个字符串第一个字母为大小字符，后面都是小写字母并且这些小写字母可有可无
 ret = re.match("[A-Z][a-z]*", "M")
-print(ret.group())
+print("[A-Z][a-z]*:%s" % ret.group())
 
 ret = re.match("[A-Z][a-z]*", "MnnM")
-print(ret.group())
+print("[A-Z][a-z]*:%s" % ret.group())
 
 ret = re.match("[A-Z][a-z]*", "Aabcdef")
-print(ret.group())
-
+print("[A-Z][a-z]*:%s" % ret.group())
